@@ -1,0 +1,7 @@
+(library
+ (name belenios)
+ (public_name belenios-lib)
+ (libraries
+  (re_export belenios-lib.core)
+  (re_export belenios-lib.question)
+  belenios-lib.v1))

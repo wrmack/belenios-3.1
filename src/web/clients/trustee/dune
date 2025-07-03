@@ -1,0 +1,12 @@
+(executable
+ (name trustee)
+ (modes js)
+ (libraries belenios_js)
+ (preprocess
+  (pps js_of_ocaml-ppx)))
+
+(install
+ (files
+  (trustee.html as apps/trustee.html))
+ (section share)
+ (package belenios-server))

@@ -1,0 +1,6 @@
+(executable
+ (name belenios_jslib)
+ (modes js)
+ (libraries belenios_js)
+ (preprocess
+  (pps js_of_ocaml-ppx)))

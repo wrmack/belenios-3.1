@@ -1,0 +1,12 @@
+(executable
+ (name credauth)
+ (modes js)
+ (libraries belenios_js)
+ (preprocess
+  (pps js_of_ocaml-ppx)))
+
+(install
+ (files
+  (credauth.html as apps/credauth.html))
+ (section share)
+ (package belenios-server))

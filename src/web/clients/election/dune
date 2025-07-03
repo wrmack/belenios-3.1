@@ -1,0 +1,12 @@
+(executable
+ (name main)
+ (modes js)
+ (libraries belenios_js)
+ (preprocess
+  (pps js_of_ocaml-ppx)))
+
+(install
+ (files
+  (election.html as apps/election.html))
+ (section share)
+ (package belenios-server))

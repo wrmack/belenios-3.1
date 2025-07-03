@@ -1,0 +1,14 @@
+(library
+ (name belenios_js)
+ (libraries
+  (re_export lwt)
+  (re_export tyxml)
+  (re_export tyxml.functor)
+  (re_export js_of_ocaml-lwt)
+  (re_export js_of_ocaml-tyxml)
+  belenios-platform-js
+  (re_export belenios-lib.api)
+  (re_export belenios_ui))
+ (modules_without_implementation messages)
+ (preprocess
+  (pps js_of_ocaml-ppx)))

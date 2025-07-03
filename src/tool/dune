@@ -1,0 +1,9 @@
+(executable
+ (name main)
+ (public_name belenios-tool)
+ (package belenios-tool)
+ (libraries
+  cmdliner
+  belenios_cohttp
+  belenios-platform-native
+  belenios-lib.api))

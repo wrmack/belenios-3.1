@@ -1,0 +1,3 @@
+(executable
+ (name main)
+ (libraries uri re belenios_cohttp yojson base64))

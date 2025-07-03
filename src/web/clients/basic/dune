@@ -1,0 +1,12 @@
+(executable
+ (name admin_basic)
+ (modes js)
+ (libraries belenios_js)
+ (preprocess
+  (pps js_of_ocaml-ppx)))
+
+(install
+ (files
+  (admin_basic.html as static/admin_basic.html))
+ (section share)
+ (package belenios-server))

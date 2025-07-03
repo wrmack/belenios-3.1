@@ -1,0 +1,21 @@
+(install
+ (files
+  (belenios-tool.html as static/belenios-tool.html))
+ (section share)
+ (package belenios-server))
+
+(executable
+ (name tool_js_fingerprint)
+ (modes js)
+ (modules tool_js_fingerprint)
+ (libraries belenios_js)
+ (preprocess
+  (pps js_of_ocaml-ppx)))
+
+(executable
+ (name tool_js)
+ (modes js)
+ (modules tool_js)
+ (libraries belenios_js hex)
+ (preprocess
+  (pps js_of_ocaml-ppx)))

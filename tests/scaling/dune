@@ -1,0 +1,7 @@
+(executable
+ (name main)
+ (libraries
+  belenios_cohttp
+  cmdliner
+  belenios-platform-native
+  belenios-lib.api))

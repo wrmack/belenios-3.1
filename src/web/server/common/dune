@@ -1,0 +1,29 @@
+(library
+ (name belenios_server)
+ (libraries
+  belenios_ui
+  belenios_server_core
+  xml-light
+  tyxml.functor
+  ocsipersist
+  ocsipersist-lib
+  ocsigenserver
+  ocsigenserver.baselib
+  ocsigenserver.cookies
+  ocsigenserver.http
+  eliom.server
+  gettext.base
+  gettext.extension
+  gettext-camomile
+  netstring)
+ (modules_without_implementation
+  web_i18n_sig
+  web_services_sig
+  web_state_sig
+  pages_common_sig
+  pages_admin_sig
+  pages_voter_sig
+  pages_sig
+  site_common_sig
+  web_auth_sig
+  web_cont_sig))

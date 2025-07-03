@@ -1,0 +1,91 @@
+(**************************************************************************)
+(*                                BELENIOS                                *)
+(*                                                                        *)
+(*  Copyright © 2012-2023 Inria                                           *)
+(*                                                                        *)
+(*  This program is free software: you can redistribute it and/or modify  *)
+(*  it under the terms of the GNU Affero General Public License as        *)
+(*  published by the Free Software Foundation, either version 3 of the    *)
+(*  License, or (at your option) any later version, with the additional   *)
+(*  exemption that compiling, linking, and/or using OpenSSL is allowed.   *)
+(*                                                                        *)
+(*  This program is distributed in the hope that it will be useful, but   *)
+(*  WITHOUT ANY WARRANTY; without even the implied warranty of            *)
+(*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU     *)
+(*  Affero General Public License for more details.                       *)
+(*                                                                        *)
+(*  You should have received a copy of the GNU Affero General Public      *)
+(*  License along with this program.  If not, see                         *)
+(*  <http://www.gnu.org/licenses/>.                                       *)
+(**************************************************************************)
+
+<doc text="Web-specific serializable datatypes">
+
+type uuid = string wrap <ocaml module="Belenios_core.Common_types.Uuid">
+type weight = abstract wrap <ocaml module="Belenios_core.Common_types.Weight">
+
+(** {1 OpenID Connect-related types} *)
+
+type oidc_configuration = {
+  authorization_endpoint : string;
+  token_endpoint : string;
+  userinfo_endpoint : string;
+}
+
+type oidc_tokens = {
+  access_token : string;
+  token_type : string;
+  id_token : string;
+} <ocaml field_prefix="oidc_">
+
+type oidc_userinfo = {
+  sub : string;
+  ?email : string option;
+} <ocaml field_prefix="oidc_">
+
+(** {1 Bulk emails} *)
+
+type password_email = {
+    recipient : string;
+    uuid : uuid;
+    title : string;
+    login : string;
+    password : string;
+    ?weight : weight option;
+    ?contact : string option;
+    langs : string list;
+  }
+
+type credential_email = {
+    recipient : string;
+    uuid : uuid;
+    title : string;
+    login : string;
+    credential : string;
+    ?weight : weight option;
+    ?contact : string option;
+    langs : string list;
+    has_passwords : bool;
+  }
+
+type bulk_email =
+  [ Password of password_email
+  | Credential of credential_email
+  ]
+
+type bulk_emails = bulk_email list <ocaml repr="array">
+
+type bulk_mode = [ Primary | Secondary ]
+
+type bulk_processed = {
+    mode : bulk_mode;
+    processed : int;
+  }
+
+(** {1 OTP logging} *)
+
+type otp_record = {
+    recipient : string;
+    code : string;
+    expiration_time : float;
+  }

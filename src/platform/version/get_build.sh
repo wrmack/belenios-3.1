@@ -15,7 +15,7 @@ cd_to_root () {
 
 cd_to_root
 VBEL="$(cat VERSION)"
-echo $VBEL
+# echo $VBEL
 
 if [ -n "$BELENIOS_BUILD" ]; then
     echo "$BELENIOS_BUILD"

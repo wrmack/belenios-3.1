@@ -42,6 +42,8 @@ deb $STABLE_MIRROR/debian $STABLE_SUITE-updates main
 deb $STABLE_MIRROR/debian-security $STABLE_SUITE-security main
 EOF
 
+echo "Here1"
+
 mkdir "$TMP/belenios-npm"
 ( cd frontend && npm install && npm ci --cache "$TMP/belenios-npm" )
 cp frontend/package-lock.json "$TMP/belenios-npm"

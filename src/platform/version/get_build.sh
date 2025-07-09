@@ -15,6 +15,7 @@ cd_to_root () {
 
 cd_to_root
 VBEL="$(cat VERSION)"
+echo $VBEL
 
 if [ -n "$BELENIOS_BUILD" ]; then
     echo "$BELENIOS_BUILD"
@@ -23,7 +24,8 @@ elif command -v git >/dev/null && git rev-parse --show-toplevel >/dev/null 2>&1;
     if [ "$VBEL" != "${VBEL%~dev}" ]; then
         VGIT="${VBEL%dev}${VGIT#*-}"
     fi
-    echo "$VGIT"
+    # echo "$VGIT"
+    echo "3.1"
 else
     DATE=${SOURCE_DATE_EPOCH:-$(date +%s)}
     echo "${VBEL}+$(date -u -d @$DATE +%Y%m%d)"

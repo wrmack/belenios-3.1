@@ -26,6 +26,7 @@ echo "I: building version $VERSION"
 TMP="$(mktemp --tmpdir --directory tmp.belenios.XXXXXXXXXX)"
 trap "rm -rf $TMP" EXIT
 echo "I: using directory $TMP..."
+echo "Here1"
 
 contrib/make-tarball.sh "$TMP/belenios-server_$VERSION.orig.tar.gz"
 tar -x -f "$TMP/belenios-server_$VERSION.orig.tar.gz" -C "$TMP"
@@ -89,6 +90,8 @@ override_dh_auto_test:
 EOF
 chmod +x debian/rules
 
+echo "Here2"
+
 cat > debian/belenios-server.install <<EOF
 _run/usr/bin usr
 _run/usr/share usr
@@ -141,6 +144,8 @@ fi
 
 #DEBHELPER#
 EOF
+
+echo "Here3"
 
 dpkg-buildpackage --no-sign -S -nc
 dcmd cp ../belenios-server_*.dsc $TARGET

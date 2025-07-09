@@ -42,8 +42,6 @@ deb $STABLE_MIRROR/debian $STABLE_SUITE-updates main
 deb $STABLE_MIRROR/debian-security $STABLE_SUITE-security main
 EOF
 
-echo "Here1"
-
 mkdir "$TMP/belenios-npm"
 ( cd frontend && npm install && npm ci --cache "$TMP/belenios-npm" )
 cp frontend/package-lock.json "$TMP/belenios-npm"
@@ -58,7 +56,7 @@ mmdebstrap --variant=buildd \
   --setup-hook='copy-in "'"$TMP"'"/ocaml.list /etc/apt/sources.list.d' \
   --include="passwd build-essential debhelper $BELENIOS_DEVDEPS $BELENIOS_DEBDEPS" \
   --customize-hook='copy-in "'"$TMP"'"/belenios-npm /var/cache' \
-  --customize-hook='chroot "$1" chown root:root -R /var/cache/belenios-npm' \
+  # --customize-hook='chroot "$1" chown root:root -R /var/cache/belenios-npm' \
   --customize-hook='chroot "$1" rm -rf '"$TMP" \
   --customize-hook='chroot "$1" sed -i -r '\''s/(\[.*\]) //'\'' /etc/apt/sources.list.d/ocaml.list' \
   --customize-hook='chroot "$1" apt-get update' \

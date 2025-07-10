@@ -13,18 +13,21 @@ $(SQUASHFS): $(ROOTFS) $(CHANGES)
 	contrib/unshare/make-squashfs.sh "$(SUITE)" \
 	  "$(CURDIR)/$(CHANGES)" "$(CURDIR)/$(ROOTFS)" \
 	  "$(CURDIR)/$(SQUASHFS)"
+	echo "Squashfs done"
 
 $(ROOTFS): $(CHANGES)
 	cd "$(BELENIOS_SOURCES)" && \
 	TMPDIR="$(BIGTMP)" \
 	contrib/unshare/make-rootfs-dev.sh "$(SUITE)" \
 	  "$(CURDIR)/$(CHANGES)" "$(CURDIR)/$(ROOTFS)"
+	echo "Rootfs done"
 
 $(CHANGES): stamp
 	cd "$(BELENIOS_SOURCES)" && \
 	TMPDIR="$(BIGTMP)" \
 	contrib/unshare/make-deb-belenios-opam.sh "$(SUITE)" \
 	  "" "$(TOOLCHAIN_VERSION)" "" "$(CURDIR)"
-
+	echo "Changes done"
+	
 stamp:
 	touch $@

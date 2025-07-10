@@ -1,0 +1,43 @@
+sbuild (Debian sbuild) 0.89.3 (07 June 2025) on 74e2ceaf50d6
+
++==============================================================================+
+| belenios-server 3.1-1 (arm64)                Thu, 10 Jul 2025 06:47:02 +0000 |
++==============================================================================+
+
+Package: belenios-server
+Version: 3.1-1
+Source Version: 3.1-1
+Distribution: stable
+Machine Architecture: arm64
+Host Architecture: arm64
+Build Architecture: arm64
+Build Type: binary
+
+I: No tarballs found in /home/belenios/.cache/sbuild
+newuidmap: write to uid_map failed: Operation not permitted
+bad exit status (1): unshare --map-user 0 --map-group 0 --map-users 100000,1,1 --map-groups 100000,1,1 chown 1:1 /tmp/tmp.sbuild.muibhyqjEw
+E: Error creating chroot session: skipping belenios-server
+
++------------------------------------------------------------------------------+
+| Summary                                      Thu, 10 Jul 2025 06:47:02 +0000 |
++------------------------------------------------------------------------------+
+
+Build Architecture: arm64
+Build Type: binary
+Build-Space: 0
+Build-Time: 0
+Distribution: stable
+Fail-Stage: create-session
+Host Architecture: arm64
+Install-Time: 0
+Job: /tmp/build/belenios-server_3.1-1.dsc
+Machine Architecture: arm64
+Package: belenios-server
+Package-Time: 0
+Source-Version: 3.1-1
+Space: 0
+Status: failed
+Version: 3.1-1
+--------------------------------------------------------------------------------
+Finished at 2025-07-10T06:47:02Z
+Build needed 00:00:00, 0k disk space

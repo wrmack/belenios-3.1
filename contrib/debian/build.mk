@@ -15,13 +15,17 @@ clean:
 
 $(CHROOT):
 	cd $(BELENIOS_SOURCES) && contrib/debian/make-chroot.sh $(CURDIR)/$@
+	echo "Here10"
 
 $(DSC):
 	cd $(BELENIOS_SOURCES) && contrib/debian/make-dsc.sh $(CURDIR)
+	echo "Here11"
 
 $(DEB): $(DSC) $(CHROOT)
 	unset LANG; \
 	sbuild --no-run-lintian --dist=stable --chroot-mode=unshare --chroot=$(CURDIR)/$(CHROOT) $(DSC)
+	echo "Here12"
 
 $(SQUASHFS): $(DEB) $(CHROOT)
 	cd $(BELENIOS_SOURCES) && contrib/debian/make-squashfs.sh $(CURDIR)/$(DEB) $(CURDIR)/$@
+	echo "Here13"

@@ -34,15 +34,15 @@ BELENIOS_SERVER_BUILDINFO="$TMP/buildinfo.txt"
 
 cp "$KEYRING" "$TMP"
 
-cat > "$TMP/ocaml.pref" <<EOF
-Package: *
-Pin: release a=$BACKPORTS_SUITE
-Pin-Priority: 1000
-EOF
+# cat > "$TMP/ocaml.pref" <<EOF
+# Package: *
+# Pin: release a=$BACKPORTS_SUITE
+# Pin-Priority: 1000
+# EOF
 
-cat > "$TMP/ocaml.list" <<EOF
-deb [signed-by=$TMP/${KEYRING##*/}] $BACKPORTS_MIRROR/pool ./
-EOF
+# cat > "$TMP/ocaml.list" <<EOF
+# deb [signed-by=$TMP/${KEYRING##*/}] $BACKPORTS_MIRROR/pool ./
+# EOF
 
 cat > "$TMP/sources.list" <<EOF
 deb $STABLE_MIRROR/debian $STABLE_SUITE main
@@ -106,5 +106,5 @@ mmdebstrap --variant=essential \
   --customize-hook='chroot "$1" /tmp/postinst.sh' \
   --customize-hook='chroot "$1" rm /tmp/postinst.sh' \
   --customize-hook='chroot "$1" rm -rf '"$TMP" \
-  --customize-hook='chroot "$1" sed -i -r '\''s/(\[.*\]) //'\'' /etc/apt/sources.list.d/ocaml.list' \
+  # --customize-hook='chroot "$1" sed -i -r '\''s/(\[.*\]) //'\'' /etc/apt/sources.list.d/ocaml.list' \
   "$STABLE_SUITE" "$TARGET" "$TMP/sources.list"

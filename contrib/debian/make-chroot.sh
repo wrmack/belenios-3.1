@@ -24,7 +24,7 @@ TMP="$(mktemp --tmpdir --directory tmp.belenios.XXXXXXXXXX)"
 trap "rm -rf $TMP" EXIT
 chmod a+rx "$TMP"
 
-cp "$KEYRING" "$TMP"
+# cp "$KEYRING" "$TMP"
 
 # cat > "$TMP/ocaml.pref" <<EOF
 # Package: *
@@ -49,9 +49,9 @@ rm -rf "$TMP/belenios-npm/_logs"
 
 mmdebstrap --variant=buildd \
   --setup-hook='mkdir -p "$1"'"$TMP" \
-  --setup-hook='copy-in "'"$KEYRING"'" "'"$TMP"'"' \
-  --setup-hook='mkdir -p "$1"/etc/apt/trusted.gpg.d' \
-  --setup-hook='copy-in "'"$KEYRING"'" /etc/apt/trusted.gpg.d' \
+  # --setup-hook='copy-in "'"$KEYRING"'" "'"$TMP"'"' \
+  # --setup-hook='mkdir -p "$1"/etc/apt/trusted.gpg.d' \
+  # --setup-hook='copy-in "'"$KEYRING"'" /etc/apt/trusted.gpg.d' \
   # --setup-hook='copy-in "'"$TMP"'"/ocaml.pref /etc/apt/preferences.d' \
   # --setup-hook='copy-in "'"$TMP"'"/ocaml.list /etc/apt/sources.list.d' \
   --include="passwd build-essential debhelper $BELENIOS_DEVDEPS $BELENIOS_DEBDEPS" \

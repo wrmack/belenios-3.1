@@ -87,11 +87,11 @@ chmod +x "$TMP/postinst.sh"
 
 mmdebstrap --variant=essential \
   --setup-hook='mkdir -p "$1"'"$TMP" \
-  --setup-hook='copy-in "'"$KEYRING"'" "'"$TMP"'"' \
-  --setup-hook='mkdir -p "$1"/etc/apt/trusted.gpg.d' \
-  --setup-hook='copy-in "'"$KEYRING"'" /etc/apt/trusted.gpg.d' \
-  --setup-hook='copy-in "'"$TMP"'"/ocaml.pref /etc/apt/preferences.d' \
-  --setup-hook='copy-in "'"$TMP"'"/ocaml.list /etc/apt/sources.list.d' \
+  # --setup-hook='copy-in "'"$KEYRING"'" "'"$TMP"'"' \
+  # --setup-hook='mkdir -p "$1"/etc/apt/trusted.gpg.d' \
+  # --setup-hook='copy-in "'"$KEYRING"'" /etc/apt/trusted.gpg.d' \
+  # --setup-hook='copy-in "'"$TMP"'"/ocaml.pref /etc/apt/preferences.d' \
+  # --setup-hook='copy-in "'"$TMP"'"/ocaml.list /etc/apt/sources.list.d' \
   --dpkgopt='path-exclude=/usr/share/man/*' \
   --dpkgopt='path-exclude=/usr/share/locale/*' \
   --dpkgopt='path-include=/usr/share/locale/locale.alias' \

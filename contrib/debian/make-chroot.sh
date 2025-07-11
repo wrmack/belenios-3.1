@@ -46,6 +46,9 @@ mkdir "$TMP/belenios-npm"
 ( cd frontend && npm install && npm ci --cache "$TMP/belenios-npm" )
 cp frontend/package-lock.json "$TMP/belenios-npm"
 rm -rf "$TMP/belenios-npm/_logs"
+echo "STABLE_SUITE: $STABLE_SUITE" 
+echo "TARGET: $TARGET"
+echo "TMP: $TMP"
 
 mmdebstrap --variant=buildd \
   --setup-hook='mkdir -p "$1"'"$TMP" \

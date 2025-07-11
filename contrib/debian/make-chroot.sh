@@ -50,7 +50,7 @@ echo "STABLE_SUITE: $STABLE_SUITE"
 echo "TARGET: $TARGET"
 echo "TMP: $TMP"
 echo "1: $1"
-cat /etc/apt/debian.sources
+cat /etc/apt/sources.list.d/debian.sources
 cat $TMP/sources.list
 
 mmdebstrap --variant=buildd \

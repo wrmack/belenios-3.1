@@ -10,3 +10,4 @@ RUN contrib/debian/setup-build-dir.sh /tmp/build
 WORKDIR /tmp/build
 RUN git config --global user.name "Belenios Builder"
 RUN git config --global user.email "belenios.builder@example.org"
+RUN git config --global --add safe.directory /tmp/belenios

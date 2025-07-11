@@ -36,10 +36,13 @@ chmod a+rx "$TMP"
 # deb [signed-by=$TMP/${KEYRING##*/}] $BACKPORTS_MIRROR/pool ./
 # EOF
 
+# cat > "$TMP/sources.list" <<EOF
+# deb $STABLE_MIRROR/debian $STABLE_SUITE main
+# deb $STABLE_MIRROR/debian $STABLE_SUITE-updates main
+# deb $STABLE_MIRROR/debian-security $STABLE_SUITE-security main
+# EOF
 cat > "$TMP/sources.list" <<EOF
 deb $STABLE_MIRROR/debian $STABLE_SUITE main
-deb $STABLE_MIRROR/debian $STABLE_SUITE-updates main
-deb $STABLE_MIRROR/debian-security $STABLE_SUITE-security main
 EOF
 
 mkdir "$TMP/belenios-npm"

@@ -23,6 +23,7 @@ export SOURCE_DATE_EPOCH="$(git log -1 --pretty=format:%ct)"
 TMP="$(mktemp --tmpdir --directory tmp.belenios.XXXXXXXXXX)"
 trap "rm -rf $TMP" EXIT
 chmod a+rx "$TMP"
+echo "TMP: $TMP"
 
 # cp "$KEYRING" "$TMP"
 

@@ -61,7 +61,7 @@ mmdebstrap --variant=buildd \
   --setup-hook='mkdir -p "$1"'"$TMP" \
   --include="passwd build-essential debhelper $BELENIOS_DEVDEPS $BELENIOS_DEBDEPS" \
   --customize-hook='copy-in "'"$TMP"'"/belenios-npm /var/cache' \
-  --customize-hook='chroot "$1" chown belenios:belenios -R /var/cache/belenios-npm' \
+  --customize-hook='chroot "$1" -R /var/cache/belenios-npm' \
   --customize-hook='chroot "$1" rm -rf '"$TMP" \
   --customize-hook='chroot "$1" apt-get update' \
   "$STABLE_SUITE" "$TARGET" "$TMP/sources.list"
@@ -71,4 +71,5 @@ mmdebstrap --variant=buildd \
   # --setup-hook='copy-in "'"$KEYRING"'" /etc/apt/trusted.gpg.d' \
   # --setup-hook='copy-in "'"$TMP"'"/ocaml.pref /etc/apt/preferences.d' \
   # --setup-hook='copy-in "'"$TMP"'"/ocaml.list /etc/apt/sources.list.d' \
+  # --customize-hook='chroot "$1" chown belenios:belenios -R /var/cache/belenios-npm' \
   # --customize-hook='chroot "$1" sed -i -r '\''s/(\[.*\]) //'\'' /etc/apt/sources.list.d/ocaml.list' \

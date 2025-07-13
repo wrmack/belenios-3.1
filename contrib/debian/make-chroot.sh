@@ -61,6 +61,7 @@ mmdebstrap --variant=buildd \
   --setup-hook='mkdir -p "$1"'"$TMP" \
   --include="passwd build-essential debhelper $BELENIOS_DEVDEPS $BELENIOS_DEBDEPS" \
   --customize-hook='copy-in "'"$TMP"'"/belenios-npm /var/cache' \
+  --customize-hook='chroot "$1" chown root:root -R /var/cache/belenios-npm' \
   --customize-hook='chroot "$1" -R /var/cache/belenios-npm' \
   --customize-hook='chroot "$1" rm -rf '"$TMP" \
   --customize-hook='chroot "$1" apt-get update' \
